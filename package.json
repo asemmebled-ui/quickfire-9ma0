@@ -15,7 +15,7 @@
     "e2e": "playwright test",
     "review-sample": "tsx scripts/review-sample.ts",
     "check": "npm run test && npm run check:render && npm run check:coverage && npm run verify && npm run build",
-    "deploy": "npm run check && gh-pages -d dist --nojekyll"
+    "deploy": "npm run check && node scripts/deploy.mjs"
   },
   "dependencies": {
     "dexie": "^4.4.7",

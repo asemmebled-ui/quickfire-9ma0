@@ -38,39 +38,31 @@ Everything is stored only on the device you're using. **More → Backup → Expo
 On the other device: **More → Backup → Import backup**. Importing replaces that device's data with the backup.
 Back up regularly. Clearing Safari's website data deletes the app's data.
 
-## Deploy (free, HTTPS) with GitHub Pages
+## Live site and redeploying
 
-One-time setup (about 10 minutes):
+The app is live at **https://asemmebled-ui.github.io/quickfire-9ma0/** (GitHub Pages, free, HTTPS).
+The code is at https://github.com/asemmebled-ui/quickfire-9ma0.
 
-1. Create a free account at github.com and a new **public** repository, e.g. `quickfire-9ma0`.
-2. In this folder:
-   ```bash
-   git init -b main
-   ```
-   ```bash
-   git add -A
-   ```
-   ```bash
-   git commit -m "Quickfire 9MA0"
-   ```
-   ```bash
-   git remote add origin https://github.com/YOUR-USERNAME/quickfire-9ma0.git
-   ```
-   ```bash
-   git push -u origin main
-   ```
-3. On GitHub: repository → **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-4. Open the **Actions** tab. The "CI and deploy" workflow runs every check (unit tests, render check, coverage,
-   SymPy verification, end-to-end tests including offline mode) and deploys only if they all pass.
-   Your app is then at `https://YOUR-USERNAME.github.io/quickfire-9ma0/`.
+**Redeploy after any change (one command):**
 
-**Redeploy (one command):** after changing anything,
+```bash
+npm run deploy
+```
+
+This runs every check (unit tests, render check, coverage, SymPy verification, build) and publishes only if
+they all pass. Phones pick up the new version the next time the app is opened. To also save the source code
+on GitHub:
 
 ```bash
 git commit -am "Update" && git push
 ```
 
-Alternatives: Netlify or Cloudflare Pages also work. Build command `npm run build`, output folder `dist`.
+**Optional: automatic checks on GitHub.** `.github/workflows/ci.yml` runs everything, including the end-to-end
+tests, on GitHub for each push, and deploys from there. Uploading a workflow file needs one extra GitHub
+permission: run `gh auth refresh -s workflow`, enter the code it shows at github.com/login/device, commit and
+push the `.github` folder, then set **Settings → Pages → Source** to **GitHub Actions**.
+
+Alternatives: Netlify or Cloudflare Pages also work (build command `npm run build`, output folder `dist`).
 
 ## Run and check it locally
 
