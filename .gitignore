@@ -1,0 +1,10 @@
+node_modules/
+dist/
+dev-dist/
+test-results/
+playwright-report/
+verify/bank-export.json
+lh.json
+*.log
+.DS_Store
+artifact/

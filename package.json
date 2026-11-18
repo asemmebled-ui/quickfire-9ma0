@@ -1,0 +1,46 @@
+{
+  "name": "quickfire-9ma0",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --port 4173 --strictPort",
+    "test": "vitest run",
+    "export-bank": "tsx scripts/export-bank.ts",
+    "check:render": "tsx scripts/check-render.ts",
+    "check:coverage": "tsx scripts/coverage.ts",
+    "verify": "npm run export-bank && node scripts/run-verify.mjs",
+    "e2e": "playwright test",
+    "review-sample": "tsx scripts/review-sample.ts",
+    "check": "npm run test && npm run check:render && npm run check:coverage && npm run verify && npm run build",
+    "deploy": "npm run check && gh-pages -d dist --nojekyll"
+  },
+  "dependencies": {
+    "dexie": "^4.4.7",
+    "katex": "^0.19.1",
+    "mathlive": "^0.111.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "ts-fsrs": "^6.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@types/katex": "^0.16.8",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "fake-indexeddb": "^6.2.8",
+    "gh-pages": "^6.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vite-plugin-pwa": "^2.0.0",
+    "vitest": "^5.1.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}
